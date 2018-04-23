@@ -117,6 +117,7 @@ type Fill struct {
 	PatternType string
 	BgColor     string
 	FgColor     string
+	Indexed     string
 }
 
 func NewFill(patternType, fgColor, bgColor string) *Fill {

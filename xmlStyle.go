@@ -211,9 +211,9 @@ func (styles *xlsxStyleSheet) getStyle(styleIndex int) *Style {
 			style.Alignment.Vertical = xf.Alignment.Vertical
 		}
 		style.Alignment.WrapText = xf.Alignment.WrapText
-        	style.Alignment.TextRotation = xf.Alignment.TextRotation
-		
-        	styles.Lock()
+		style.Alignment.TextRotation = xf.Alignment.TextRotation
+
+		styles.Lock()
 		styles.styleCache[styleIndex] = style
 		styles.Unlock()
 	}
@@ -653,6 +653,7 @@ type xlsxPatternFill struct {
 	PatternType string    `xml:"patternType,attr,omitempty"`
 	FgColor     xlsxColor `xml:"fgColor,omitempty"`
 	BgColor     xlsxColor `xml:"bgColor,omitempty"`
+	Indexed     string    `xml:"indexed,omitempty"`
 }
 
 func (patternFill *xlsxPatternFill) Equals(other xlsxPatternFill) bool {
@@ -672,7 +673,7 @@ func (patternFill *xlsxPatternFill) Marshal() (result string, err error) {
 	if patternFill.BgColor.RGB != "" {
 		ending = `>`
 		terminator = "</patternFill>"
-		subparts += fmt.Sprintf(`<bgColor rgb="%s"/>`, patternFill.BgColor.RGB)
+		subparts += fmt.Sprintf(`<bgColor rgb="%s" indexed="%s"/>`, patternFill.BgColor.RGB, patternFill.Indexed)
 	}
 	result += ending
 	result += subparts
