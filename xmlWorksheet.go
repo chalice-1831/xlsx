@@ -50,9 +50,9 @@ type xlsxWorksheet struct {
 	Cols            *xlsxCols            `xml:"cols,omitempty"`
 	SheetData       xlsxSheetData        `xml:"sheetData"`
 	Hyperlinks      *xlsxHyperlinks      `xml:"hyperlinks,omitempty"`
-	DataValidations *xlsxDataValidations `xml:"dataValidations"`
 	AutoFilter      *xlsxAutoFilter      `xml:"autoFilter,omitempty"`
 	MergeCells      *xlsxMergeCells      `xml:"mergeCells,omitempty"`
+	DataValidations *xlsxDataValidations `xml:"dataValidations"`
 	PrintOptions    *xlsxPrintOptions    `xml:"printOptions,omitempty"`
 	PageMargins     *xlsxPageMargins     `xml:"pageMargins,omitempty"`
 	PageSetUp       *xlsxPageSetUp       `xml:"pageSetup,omitempty"`
